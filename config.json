@@ -1,0 +1,18 @@
+{
+    "mqtt": {
+        "port": 1883,
+        "httpPort": 3000,
+        "loglevel": "info",
+        "db": "mongodb://localhost/mqtt"
+    },
+    "tsstore" : {
+        "db": "mongodb://localhost/mydb",
+        "verbose": false
+    },
+    "auth0": {
+        "enabled": true,
+        "endpoint": "https://decoplant.auth0.com",
+        "clientSecret": "7INrZwoivJwCP600uV_AbCI6QXVF1nGOSq4VnTHv_pYyvn27xV15JLtiYPa59ajt",
+        "clientId": "riQAyvtyyRBNvO9zhRsQAXMEtaQA02uW"
+    }
+}

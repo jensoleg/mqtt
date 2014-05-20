@@ -1,0 +1,17 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^0.4.0",
+    "mongoose": "^3.8.9",
+    "mongoose-ts": "git://github.com/jensoleg/mongoose-timeseries",
+    "mosca": "^0.21.1",
+    "request": "^2.36.0",
+    "ts-store": "git://github.com/jensoleg/ts-store",
+    "underscore": "^1.6.0"
+  }
+}
