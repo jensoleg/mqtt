@@ -18,11 +18,13 @@ if(process.env.OPENSHIFT_MONGODB_DB_URL){
     ts_mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + config.tsstore.db;
 }
 
+var host_ip = process.env.OPENSHIFT_NODEJS_IP || config.mqtt.host;
 var server_port = process.env.OPENSHIFT_NODEJS_PORT || config.mqtt.httpPort;
 
 MongoClient.connect(mqtt_mongodb_connection_string, {}, function (err, db) {
 
     var settings = {
+        host: host_ip,
         port: config.mqtt.port,
         logger: {
             level: config.mqtt.loglevel

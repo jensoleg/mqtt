@@ -1,5 +1,6 @@
 {
     "mqtt": {
+        "host": "localhost",
         "port": 1883,
         "httpPort": 8080,
         "loglevel": "info",
