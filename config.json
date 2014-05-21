@@ -1,12 +1,14 @@
 {
     "mqtt": {
         "port": 1883,
-        "httpPort": 3000,
+        "httpPort": 8080,
         "loglevel": "info",
-        "db": "mongodb://localhost/mqtt"
+        "dbConnection": "mongodb://localhost/",
+        "db": "mqtt"
     },
     "tsstore" : {
-        "db": "mongodb://localhost/mydb",
+        "dbConnection": "mongodb://localhost/",
+        "db": "timeseries",
         "verbose": false
     },
     "auth0": {
