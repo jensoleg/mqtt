@@ -1,10 +1,27 @@
 var mosca = require('mosca')
     , Auth0Mosca = require('./extensions/auth0Mosca')
     , timeSeriesStore = require('ts-store')
-    , MongoClient = require('mongodb').MongoClient
-    , config = require('./config.json');
+    , mongoose = require('mongoose')
+    , config = require('./config.json')
+    , uriUtil = require('mongodb-uri');
 
-MongoClient.connect(config.mqtt.dbConnection + config.mqtt.db, {}, function (err, db) {
+
+var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+    replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };
+
+
+var mongodbUri = config.mqtt.dbConnection + config.mqtt.db;
+var mongooseUri = uriUtil.formatMongoose(mongodbUri);
+
+var mongooseUri = uriUtil.formatMongoose(mongodbUri);
+
+mongoose.connect(mongooseUri, options);
+var conn = mongoose.connection;
+
+conn.on('error', console.error.bind(console, 'connection error:'));
+
+conn.once('open', function() {
+    // Wait for the database connection to establish, then start the app.
 
     var settings = {
         port: config.mqtt.port,
@@ -12,7 +29,7 @@ MongoClient.connect(config.mqtt.dbConnection + config.mqtt.db, {}, function (err
             level: config.mqtt.loglevel
         },
         persistence: {
-            connection: db,
+            connection: conn.db,
             factory: mosca.persistence.Mongo},
         http: {
             port: config.mqtt.httpPort,
@@ -36,7 +53,7 @@ MongoClient.connect(config.mqtt.dbConnection + config.mqtt.db, {}, function (err
     }
 
     // Wire up time series database
-    var timeSeries = new timeSeriesStore({verbose: config.tsstore.verbose, db: config.tsstore.dbConnection + config.tsstore.db});
+    var timeSeries = new timeSeriesStore({verbose: config.tsstore.verbose});
     server.published = timeSeries.publish();
 
     server.on('clientConnected', function (client) {

@@ -24,51 +24,10 @@
         }
       }
     },
-    "mongodb": {
-      "version": "1.4.5",
-      "from": "mongodb@",
-      "resolved": "https://registry.npmjs.org/mongodb/-/mongodb-1.4.5.tgz",
-      "dependencies": {
-        "bson": {
-          "version": "0.2.8",
-          "from": "bson@0.2.8",
-          "resolved": "https://registry.npmjs.org/bson/-/bson-0.2.8.tgz",
-          "dependencies": {
-            "nan": {
-              "version": "1.0.0",
-              "from": "nan@~1.0.0",
-              "resolved": "https://registry.npmjs.org/nan/-/nan-1.0.0.tgz"
-            }
-          }
-        },
-        "kerberos": {
-          "version": "0.0.3",
-          "from": "kerberos@0.0.3",
-          "resolved": "https://registry.npmjs.org/kerberos/-/kerberos-0.0.3.tgz"
-        },
-        "readable-stream": {
-          "version": "1.0.27-1",
-          "from": "readable-stream@latest",
-          "dependencies": {
-            "core-util-is": {
-              "version": "1.0.1",
-              "from": "core-util-is@~1.0.0"
-            },
-            "isarray": {
-              "version": "0.0.1",
-              "from": "isarray@0.0.1"
-            },
-            "string_decoder": {
-              "version": "0.10.25-1",
-              "from": "string_decoder@~0.10.x"
-            },
-            "inherits": {
-              "version": "2.0.1",
-              "from": "inherits@~2.0.1"
-            }
-          }
-        }
-      }
+    "mongodb-uri": {
+      "version": "0.9.6",
+      "from": "mongodb-uri@",
+      "resolved": "https://registry.npmjs.org/mongodb-uri/-/mongodb-uri-0.9.6.tgz"
     },
     "mongoose": {
       "version": "3.8.9",

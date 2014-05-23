@@ -9,8 +9,8 @@
     },
     "tsstore" : {
         "dbConnection": "mongodb://localhost/",
-        "db": "timeseries",
-        "verbose": false
+        "db": "mqtt",
+        "verbose": true
     },
     "auth0": {
         "enabled": true,
