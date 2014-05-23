@@ -13,8 +13,6 @@ var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000
 var mongodbUri = config.mqtt.dbConnection + config.mqtt.db;
 var mongooseUri = uriUtil.formatMongoose(mongodbUri);
 
-var mongooseUri = uriUtil.formatMongoose(mongodbUri);
-
 mongoose.connect(mongooseUri, options);
 var conn = mongoose.connection;
 
