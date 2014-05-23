@@ -1,22 +1,23 @@
 {
-    "name": "bobbytech-mqtt",
-    "version": "0.0.1",
-    "private": true,
-    "scripts": {
-        "start": "node server.js"
-    },
-    "main": "server.js",
-    "engines": {
-        "node": ">= 0.10",
-        "npm": ">= 1.4"
-    },
-    "dependencies": {
-        "jsonwebtoken": ">=0.4.0",
-        "mongoose": ">=3.8.9",
-        "mongoose-ts": "git://github.com/jensoleg/mongoose-timeseries",
-        "mosca": ">=0.21.1",
-        "request": ">=2.36.0",
-        "ts-store": "git://github.com/jensoleg/ts-store",
-        "underscore": ">=1.6.0"
-    }
+  "name": "bobbytech-mqtt",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "engines": {
+    "node": ">= 0.10",
+    "npm": ">= 1.4"
+  },
+  "dependencies": {
+    "jsonwebtoken": ">=0.4.0",
+    "mongodb": "^1.4.5",
+    "mongoose": ">=3.8.9",
+    "mongoose-ts": "git://github.com/jensoleg/mongoose-timeseries",
+    "mosca": ">=0.21.1",
+    "request": ">=2.36.0",
+    "ts-store": "git://github.com/jensoleg/ts-store",
+    "underscore": ">=1.6.0"
+  }
 }

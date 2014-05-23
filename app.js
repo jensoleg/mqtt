@@ -4,7 +4,7 @@ var mosca = require('mosca')
     , MongoClient = require('mongodb').MongoClient
     , config = require('./config.json');
 
-MongoClient.connect(config.mqtt.db, {}, function (err, db) {
+MongoClient.connect(config.mqtt.dbConnection + config.mqtt.db, {}, function (err, db) {
 
     var settings = {
         port: config.mqtt.port,
@@ -36,7 +36,7 @@ MongoClient.connect(config.mqtt.db, {}, function (err, db) {
     }
 
     // Wire up time series database
-    var timeSeries = new timeSeriesStore({verbose: config.tsstore.verbose, db: config.tsstore.db});
+    var timeSeries = new timeSeriesStore({verbose: config.tsstore.verbose, db: config.tsstore.dbConnection + config.tsstore.db});
     server.published = timeSeries.publish();
 
     server.on('clientConnected', function (client) {
