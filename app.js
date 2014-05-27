@@ -1,5 +1,5 @@
 var mosca = require('mosca')
-    , Auth0Mosca = require('auth0Mosca')
+    , Auth0Mosca = require('auth0mosca')
     , timeSeriesStore = require('ts-store')
     , mongoose = require('mongoose')
     , config = require('./config.json')
