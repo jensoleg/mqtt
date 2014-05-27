@@ -1,5 +1,5 @@
 var mosca = require('mosca')
-    , Auth0Mosca = require('./extensions/auth0Mosca')
+    , Auth0Mosca = require('auth0Mosca')
     , timeSeriesStore = require('ts-store')
     , mongoose = require('mongoose')
     , config = require('./config.json')
@@ -42,7 +42,7 @@ conn.once('open', function() {
 
     if (config.auth0.enabled) {
         //auth0 connection where all user/devices are registered.
-        var auth0 = new Auth0Mosca(config.auth0.endpoint, config.auth0.clientSecret);
+        var auth0 = new Auth0Mosca(config.auth0.endpoint, config.auth0.clientId, config.auth0.clientSecret, 'Username-Password-Authentication');
 
         //Wire up authentication & authorization to mosca
         server.authenticate = auth0.authenticate();
