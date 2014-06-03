@@ -9,17 +9,17 @@
     },
     "tsstore": {
         "dbConnection": "mongodb://localhost/",
-        "db": "time-series",
+        "db": "timeseries",
         "verbose": false
     },
     "enableAuth": true,
     "domains": {
-        "decoplant.com": {
+        "decoplant": {
             "endpoint": "https://decoplant.auth0.com",
             "clientSecret": "7INrZwoivJwCP600uV_AbCI6QXVF1nGOSq4VnTHv_pYyvn27xV15JLtiYPa59ajt",
             "clientId": "riQAyvtyyRBNvO9zhRsQAXMEtaQA02uW"
         },
-        "bobbytech.com": {
+        "bobbytech": {
             "endpoint": "https://bobbytech.auth0.com",
             "clientSecret": "7INrZwoivJwCP600uV_AbCI6QXVF1nGOSq4VnTHv_pYyvn27xV15JLtiYPa59ajt",
             "clientId": "riQAyvtyyRBNvO9zhRsQAXMEtaQA02uW"
