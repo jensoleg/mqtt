@@ -7,15 +7,22 @@
         "dbConnection": "mongodb://localhost/",
         "db": "mqtt"
     },
-    "tsstore" : {
+    "tsstore": {
         "dbConnection": "mongodb://localhost/",
-        "db": "mqtt",
-        "verbose": true
+        "db": "time-series",
+        "verbose": false
     },
-    "auth0": {
-        "enabled": true,
-        "endpoint": "https://decoplant.auth0.com",
-        "clientSecret": "7INrZwoivJwCP600uV_AbCI6QXVF1nGOSq4VnTHv_pYyvn27xV15JLtiYPa59ajt",
-        "clientId": "riQAyvtyyRBNvO9zhRsQAXMEtaQA02uW"
+    "enableAuth": true,
+    "domains": {
+        "decoplant.com": {
+            "endpoint": "https://decoplant.auth0.com",
+            "clientSecret": "7INrZwoivJwCP600uV_AbCI6QXVF1nGOSq4VnTHv_pYyvn27xV15JLtiYPa59ajt",
+            "clientId": "riQAyvtyyRBNvO9zhRsQAXMEtaQA02uW"
+        },
+        "bobbytech.com": {
+            "endpoint": "https://bobbytech.auth0.com",
+            "clientSecret": "7INrZwoivJwCP600uV_AbCI6QXVF1nGOSq4VnTHv_pYyvn27xV15JLtiYPa59ajt",
+            "clientId": "riQAyvtyyRBNvO9zhRsQAXMEtaQA02uW"
+        }
     }
 }
