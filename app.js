@@ -30,7 +30,8 @@ var settings = {
         },
         persistence: {
             connection: MQTTconnection.db,
-            factory: mosca.persistence.Mongo},
+            factory: mosca.persistence.Mongo
+        },
         http: {
             port: config.mqtt.httpPort,
             static: __dirname + "/static",
