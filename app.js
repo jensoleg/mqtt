@@ -36,7 +36,7 @@ var settings = {
             port: config.mqtt.httpPort,
             static: __dirname + "/static",
             bundle: true,
-            stats: false
+            stats: true
         },
         onlyHttp: false
     },
@@ -52,6 +52,7 @@ if (config.enableAuth) {
     server.authorizeSubscribe = auth0.authorizeSubscribe();
 }
 
+//Wire up persistence to time series database
 server.published = timeSeries.publish();
 
 server.on('clientConnected', function (client) {
