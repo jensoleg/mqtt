@@ -5,7 +5,8 @@ var mosca = require('mosca'),
     TimeSeriesStore = require('ts-store'),
     mongoose = require('mongoose'),
     config = require('./config.json'),
-    uriUtil = require('mongodb-uri');
+    uriUtil = require('mongodb-uri'),
+    Triggers = require('./app/triggers.js');
 
 var options = {
     server: {
@@ -20,8 +21,11 @@ var mongodbTSUri = config.tsstore.dbConnection + config.tsstore.db,
     mongooseTSUri = uriUtil.formatMongoose(mongodbTSUri),
     mongodbMqttUri = config.mqtt.dbConnection + config.mqtt.db,
     mongooseMqttUri = uriUtil.formatMongoose(mongodbMqttUri),
+    mongodbBobbyUri = config.bobby.dbConnection + config.bobby.db,
+    mongooseBobbyUri = uriUtil.formatMongoose(mongodbBobbyUri),
     MQTTconnection = mongoose.createConnection(mongooseMqttUri, options),
-    TSconnection = mongoose.createConnection(mongooseTSUri, options);
+    TSconnection = mongoose.createConnection(mongooseTSUri, options),
+    Bobbyconnection = mongoose.createConnection(mongooseBobbyUri, options);
 
 var settings = {
         port: config.mqtt.port,
@@ -59,9 +63,16 @@ server.on('clientConnected', function (client) {
     console.log('client connected', client.id);
 });
 
+var triggers = new Triggers(Bobbyconnection);
+
 server.on('published', function (packet, client) {
     if (client !== undefined) {
         console.log('Event Published: ' + packet.payload + ' Client :' + client.id);
+        triggers.handle(packet, client, function (send, error) {
+            if (error) {
+                console.log('trigger failed: ', error);
+            }
+        });
     }
 });
 

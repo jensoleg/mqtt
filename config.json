@@ -12,6 +12,11 @@
         "db": "timeseries",
         "verbose": false
     },
+    "bobby": {
+        "dbConnection": "mongodb://localhost/",
+        "db": "bobby",
+        "verbose": false
+    },
     "enableAuth": true,
     "domains": {
         "decoplant": {
