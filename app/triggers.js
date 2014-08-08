@@ -18,14 +18,13 @@ var request = require('request'),
 // Initialize with reference to auth0 domains
 function Triggers(connection) {
 
-//    var deviceModel = connection.model(runOptions.options.realm, Device.schema, runOptions.options.realm + '.devices');
-    var deviceModel = connection.model('decoplant', Device.schema, 'decoplant.devices');
-
     this.handle = function (packet, client, callback) {
         // parse topic
         var topics = packet.topic.split('/'),
             deviceId = topics[2],
-            stream = topics[3];
+            stream = topics[3],
+
+        deviceModel = connection.model(client.domain, Device.schema, client.domain + '.devices');
 
         // find device
         deviceModel.findOne({id: deviceId}, function (error, device) {
@@ -48,11 +47,6 @@ function Triggers(connection) {
                 if (!trigger) {
                     callback(false, null);
                 } else {
-
-                    // find last value in ts store
-
-
-
 
                     // evaluate expression
                     doActivate = eval(packet.payload.toString() + operators[trigger.trigger_type] + trigger.threshold_value);
