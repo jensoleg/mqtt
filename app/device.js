@@ -14,7 +14,7 @@ var DeviceSchema = new Schema(
             {
                 id: String,
                 name: String,
-                ctrltype: String,
+                ctrlType: String,
                 minValue: Number,
                 maxValue: Number,
                 minCritical: Number,
