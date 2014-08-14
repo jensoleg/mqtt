@@ -68,11 +68,7 @@ var triggers = new Triggers(Bobbyconnection);
 server.on('published', function (packet, client) {
     if (client !== undefined) {
         console.log('Event Published: ' + packet.payload + ' Client :' + client.id);
-        triggers.handle(packet, client, function (send, error) {
-            if (error) {
-                console.log('trigger failed: ', error);
-            }
-        });
+        triggers.handle(packet, client);
     }
 });
 

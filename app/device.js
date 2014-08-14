@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    Mixed = mongoose.Schema.Types.Mixed;
 
 var DeviceSchema = new Schema(
     {
@@ -27,7 +28,9 @@ var DeviceSchema = new Schema(
         ],
         triggers: [
             {
-                url: String,
+                request: [
+                    {request_options: Schema.Types.Mixed}
+                ],
                 trigger_type: { type: String, enum: ['lt', 'lte', 'gt', 'gte', 'eq'] },
                 threshold_value: String,
                 stream_id: String,
