@@ -3,10 +3,6 @@
 var request = require('request'),
     _ = require('lodash'),
     Device = require('./device.js'),
-    triggerApi = {
-        url: undefined,
-        method: undefined
-    },
     operators = {
         lt: '<',
         lte: '<=',
@@ -18,67 +14,51 @@ var request = require('request'),
 // Initialize with reference to auth0 domains
 function Triggers(connection) {
 
-    this.handle = function (packet, client, callback) {
+    this.handle = function (packet, client) {
         // parse topic
         var topics = packet.topic.split('/'),
             deviceId = topics[2],
             stream = topics[3],
 
-        deviceModel = connection.model(client.domain, Device.schema, client.domain + '.devices');
+            deviceModel = connection.model(client.domain, Device.schema, client.domain + '.devices');
 
         // find device
         deviceModel.findOne({id: deviceId}, function (error, device) {
             if (!error) {
                 // any triggers ????
                 var deviceDoc = device._doc,
-                    trigger,
-                    index,
+                    index = 0,
                     doActivate;
 
-                if (deviceDoc.triggers) {
-                    index = _.findIndex(deviceDoc.triggers, function (trigger) {
-                        return trigger.stream_id === stream;
-                    });
-                    if (index >= 0) {
-                        trigger = deviceDoc.triggers[index];
-                    }
-                }
+                /* run through triggers and match stream topic */
+                _.each(deviceDoc.triggers, function (trigger) {
+                    var trigger = trigger._doc;
+                    if (trigger.stream_id === stream) {
 
-                if (!trigger) {
-                    callback(false, null);
-                } else {
+                        _.each(trigger.requests, function (httpRequest) {
+                            // evaluate expression
+                            doActivate = eval(packet.payload.toString() + operators[trigger.trigger_type] + trigger.threshold_value);
 
-                    // evaluate expression
-                    doActivate = eval(packet.payload.toString() + operators[trigger.trigger_type] + trigger.threshold_value);
-
-                    if (doActivate) {
-                        if (deviceDoc.triggers[index].triggered_value === undefined) {
-                            device.triggers[index].triggered_value = packet.payload.toString();
-                            device.save(function (error) {
-                                if (!error) {
-                                    // perform request
-                                    var triggerUrl = trigger.url.replace("{device}", deviceDoc.name);
-                                    triggerApi.url = triggerUrl.replace("{value}", packet.payload.toString());
-                                    triggerApi.method = 'POST';
-                                    request(triggerApi, function (error, response) {
-                                        if (!error && response.statusCode === 200) {
-                                            callback(true, null);
-                                        } else {
-                                            callback(false, error);
+                            if (doActivate) {
+                                if (deviceDoc.triggers[index].triggered_value === undefined) {
+                                    device.triggers[index].triggered_value = packet.payload.toString();
+                                    device.save(function (error) {
+                                        if (!error) {
+                                            // perform request
+                                            request(httpRequest.request_options, function (error, response) {
+                                            });
                                         }
                                     });
-                                } else {
-                                    return callback(false, error);
                                 }
-                            });
-                        }
-                    } else {
-                        device.triggers[index].triggered_value = undefined;
-                        device.save(function (error) {
-                            return callback(false, error);
+                            } else {
+                                device.triggers[index].triggered_value = undefined;
+                                device.save(function (error) {
+                                });
+                            }
                         });
                     }
-                }
+                    index++;
+                });
             }
         });
     };
@@ -88,10 +68,9 @@ Triggers.prototype.handle = function () {
 
     var self = this;
 
-    return function (packet, client, callback) {
+    return function (packet, client) {
 
         self.handle(packet, client, function (send, err) {
-            return callback(send, err);
         });
     };
 };
