@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "dependencies": {
     "auth0mosca": {
-      "version": "0.1.0",
+      "version": "0.1.1",
       "from": "git://github.com/jensoleg/auth0mosca",
-      "resolved": "git://github.com/jensoleg/auth0mosca#1449944b8a65bda8a5709b07503011a0e88554a4",
+      "resolved": "git://github.com/jensoleg/auth0mosca#91b2572da0928c33467c14bb6e0285c8117a24ce",
       "dependencies": {
         "jsonwebtoken": {
           "version": "0.2.0",
@@ -296,9 +296,9 @@
       }
     },
     "mongoose-ts": {
-      "version": "0.0.2",
+      "version": "0.0.3",
       "from": "git://github.com/jensoleg/mongoose-timeseries",
-      "resolved": "git://github.com/jensoleg/mongoose-timeseries#4ccd7845cab7d4ef12a5c002b6f52e9f3cc7ced5"
+      "resolved": "git://github.com/jensoleg/mongoose-timeseries#ffb2e41ca68303273ebcaee322da81242f0a5908"
     },
     "mosca": {
       "version": "0.21.9",
@@ -1662,13 +1662,18 @@
       }
     },
     "ts-store": {
-      "version": "0.0.1",
+      "version": "0.0.2",
       "from": "git://github.com/jensoleg/ts-store",
-      "resolved": "git://github.com/jensoleg/ts-store#58c35ddc4a6a7d6612f62148e78c9505e0c8e864",
+      "resolved": "git://github.com/jensoleg/ts-store#b81edfaf9d473c777be1ac994ceb7fb7869dc5b6",
       "dependencies": {
         "lru-cache": {
           "version": "2.5.0",
           "from": "lru-cache@^2.5.0"
+        },
+        "moment": {
+          "version": "2.8.1",
+          "from": "moment@^2.8.1",
+          "resolved": "https://registry.npmjs.org/moment/-/moment-2.8.1.tgz"
         }
       }
     },
