@@ -298,7 +298,7 @@
     "mongoose-ts": {
       "version": "0.0.3",
       "from": "git://github.com/jensoleg/mongoose-timeseries",
-      "resolved": "git://github.com/jensoleg/mongoose-timeseries#31a6c04526ddbcb587c9f16d79fdeada797fd048",
+      "resolved": "git://github.com/jensoleg/mongoose-timeseries#bc7813bec72003c5c0766c4c0907f14348ad4166",
       "dependencies": {
         "moment": {
           "version": "2.8.1",
@@ -1671,7 +1671,7 @@
     "ts-store": {
       "version": "0.0.2",
       "from": "git://github.com/jensoleg/ts-store",
-      "resolved": "git://github.com/jensoleg/ts-store#b81edfaf9d473c777be1ac994ceb7fb7869dc5b6",
+      "resolved": "git://github.com/jensoleg/ts-store#33750f03dda7baae8a198c65d913ce8e4d07b227",
       "dependencies": {
         "lru-cache": {
           "version": "2.5.0",
