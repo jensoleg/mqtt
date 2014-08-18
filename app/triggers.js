@@ -24,7 +24,7 @@ function Triggers(connection) {
 
         // find device
         deviceModel.findOne({id: deviceId}, function (error, device) {
-            if (!error) {
+            if (!error && device) {
                 // any triggers ????
                 var deviceDoc = device._doc,
                     index = 0,
