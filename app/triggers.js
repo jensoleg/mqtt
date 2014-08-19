@@ -2,7 +2,9 @@
 
 var request = require('request'),
     _ = require('lodash'),
-    Device = require('./device.js'),
+//Device = require('./device.js'),
+    Installation = require('devices'),
+    installation,
     operators = {
         lt: '<',
         lte: '<=',
@@ -20,39 +22,38 @@ function Triggers(connection) {
             deviceId = topics[2],
             stream = topics[3],
 
-            deviceModel = connection.model(client.domain, Device.schema, client.domain + '.devices');
+            installation = new Installation(connection, client.domain + '.installation');
+
 
         // find device
-        deviceModel.findOne({id: deviceId}, function (error, device) {
+        installation.getDevice(deviceId, function (error, device) {
             if (!error && device) {
                 // any triggers ????
-                var deviceDoc = device._doc,
-                    index = 0,
+                var index = 0,
                     doActivate;
 
                 /* run through triggers and match stream topic */
-                _.each(deviceDoc.triggers, function (trigger) {
-                    var trigger = trigger._doc;
+                _.each(device.triggers, function (trigger) {
                     if (trigger.stream_id === stream) {
 
-                        _.each(trigger.requests, function (httpRequest) {
+                        _.each(trigger.request, function (httpRequest) {
                             // evaluate expression
                             doActivate = eval(packet.payload.toString() + operators[trigger.trigger_type] + trigger.threshold_value);
 
                             if (doActivate) {
-                                if (deviceDoc.triggers[index].triggered_value === undefined) {
-                                    device.triggers[index].triggered_value = packet.payload.toString();
-                                    device.save(function (error) {
+
+                                if (_.isEmpty(trigger.triggered_value) || _.isUndefined(trigger.triggered_value)) {
+                                    installation.updateTriggerValue(device.id, index, packet.payload.toString(), function (error) {
                                         if (!error) {
                                             // perform request
                                             request(httpRequest.request_options, function (error, response) {
                                             });
                                         }
                                     });
+
                                 }
                             } else {
-                                device.triggers[index].triggered_value = undefined;
-                                device.save(function (error) {
+                                installation.updateTriggerValue(device.id, index, undefined,  function (error) {
                                 });
                             }
                         });

@@ -161,6 +161,18 @@
         }
       }
     },
+    "devices": {
+      "version": "1.0.0",
+      "from": "git+https://github.com/jensoleg/devices.git",
+      "resolved": "git+https://github.com/jensoleg/devices.git#942374cdfd8c465de9508c9a3ea81408a5578b90",
+      "dependencies": {
+        "moment": {
+          "version": "2.8.1",
+          "from": "moment@^2.8.1",
+          "resolved": "https://registry.npmjs.org/moment/-/moment-2.8.1.tgz"
+        }
+      }
+    },
     "jsonwebtoken": {
       "version": "0.4.1",
       "from": "jsonwebtoken@0.4.1",
