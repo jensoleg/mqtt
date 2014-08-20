@@ -2,7 +2,6 @@
 
 var request = require('request'),
     _ = require('lodash'),
-//Device = require('./device.js'),
     Installation = require('devices'),
     installation,
     operators = {
@@ -13,7 +12,6 @@ var request = require('request'),
         eq: '=='
     };
 
-// Initialize with reference to auth0 domains
 function Triggers(connection) {
 
     this.handle = function (packet, client) {
@@ -24,11 +22,9 @@ function Triggers(connection) {
 
             installation = new Installation(connection, client.domain + '.installation');
 
-
         // find device
         installation.getDevice(deviceId, function (error, device) {
             if (!error && device) {
-                // any triggers ????
                 var index = 0,
                     doActivate;
 
@@ -53,7 +49,7 @@ function Triggers(connection) {
 
                                 }
                             } else {
-                                installation.updateTriggerValue(device.id, index, undefined,  function (error) {
+                                installation.updateTriggerValue(device.id, index, undefined, function (error) {
                                 });
                             }
                         });
