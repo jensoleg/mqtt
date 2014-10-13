@@ -19,15 +19,21 @@
     },
     "enableAuth": true,
     "domains": {
+        "local": {
+            "endpoint": "https://development.auth0.com",
+            "clientSecret": "Hi0J-KYJi3qFiI96vMzy8PX7Dikys2h9r3f1Ij6zx7hZ27EjbIBKFAf6bQiCshJo",
+            "clientId": "kpWrEQ5gJclwuAljKpHgNcJA3NwNZ0FL"
+        },
         "decoplant": {
             "endpoint": "https://decoplant.auth0.com",
             "clientSecret": "7INrZwoivJwCP600uV_AbCI6QXVF1nGOSq4VnTHv_pYyvn27xV15JLtiYPa59ajt",
             "clientId": "riQAyvtyyRBNvO9zhRsQAXMEtaQA02uW"
         },
-        "bobbytech": {
-            "endpoint": "https://bobbytech.auth0.com",
-            "clientSecret": "7INrZwoivJwCP600uV_AbCI6QXVF1nGOSq4VnTHv_pYyvn27xV15JLtiYPa59ajt",
-            "clientId": "riQAyvtyyRBNvO9zhRsQAXMEtaQA02uW"
+        "development": {
+            "endpoint": "https://development.auth0.com",
+            "clientSecret": "Hi0J-KYJi3qFiI96vMzy8PX7Dikys2h9r3f1Ij6zx7hZ27EjbIBKFAf6bQiCshJo",
+            "clientId": "kpWrEQ5gJclwuAljKpHgNcJA3NwNZ0FL"
         }
+
     }
 }

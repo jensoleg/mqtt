@@ -60,17 +60,20 @@ if (config.enableAuth) {
 server.published = timeSeries.publish();
 
 server.on('clientConnected', function (client) {
-    console.log('client connected', client.id);
+    console.log('client connected', client.id + ' ' + client.deviceProfile.name + ' at: ' + client.deviceProfile.domain);
 });
 
-var triggers = new Triggers(Bobbyconnection);
+
+
+// var triggers = new Triggers(Bobbyconnection);
 
 server.on('published', function (packet, client) {
     if (client !== undefined) {
         console.log('Event Published: ' + packet.payload + ' Client :' + client.id);
-        triggers.handle(packet, client);
+//        triggers.handle(packet, client);
     }
 });
+
 
 // fired when the mqtt server is ready
 function setup() {

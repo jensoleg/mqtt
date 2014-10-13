@@ -1,6 +1,6 @@
 {
   "name": "bobbytech-mqtt",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -11,16 +11,16 @@
     "npm": ">= 1.4"
   },
   "dependencies": {
-    "auth0mosca": "git://github.com/jensoleg/auth0mosca",
-    "devices": "git+https://github.com/jensoleg/devices.git",
-    "jsonwebtoken": ">=0.4.0",
+    "auth0mosca": "jensoleg/auth0mosca",
+    "devices": "jensoleg/devices",
+    "jsonwebtoken": "0.2.0",
     "lodash": "^2.4.1",
     "mongodb-uri": "^0.9.6",
     "mongoose": "3.8.14",
-    "mongoose-ts": "git://github.com/jensoleg/mongoose-timeseries",
-    "mosca": "^0.21.5",
+    "mongoose-ts": "jensoleg/mongoose-timeseries",
+    "mosca": "^0.24.2",
     "request": ">=2.36.0",
-    "ts-store": "git://github.com/jensoleg/ts-store",
+    "ts-store": "/jensoleg/ts-store",
     "underscore": ">=1.6.0"
   }
 }
