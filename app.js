@@ -23,9 +23,9 @@ var mongodbTSUri = config.tsstore.dbConnection + config.tsstore.db,
     mongooseMqttUri = uriUtil.formatMongoose(mongodbMqttUri),
     mongodbBobbyUri = config.bobby.dbConnection + config.bobby.db,
     mongooseBobbyUri = uriUtil.formatMongoose(mongodbBobbyUri),
-    MQTTconnection = mongoose.createConnection(mongooseMqttUri, options),
-    TSconnection = mongoose.createConnection(mongooseTSUri, options),
-    Bobbyconnection = mongoose.createConnection(mongooseBobbyUri, options);
+    //MQTTconnection = mongoose.createConnection(mongooseMqttUri, options),
+    TSconnection = mongoose.createConnection(mongooseTSUri, options);
+    //Bobbyconnection = mongoose.createConnection(mongooseBobbyUri, options);
 
 var settings = {
         port: config.mqtt.port,
@@ -33,7 +33,7 @@ var settings = {
             level: config.mqtt.loglevel
         },
         persistence: {
-            connection: MQTTconnection.db,
+            url: mongodbMqttUri,
             factory: mosca.persistence.Mongo
         },
         http: {

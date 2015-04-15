@@ -2,19 +2,19 @@
     "mqtt": {
         "host": "localhost",
         "port": 1883,
-        "httpPort": 8080,
+        "httpPort": 3000,
         "loglevel": "",
-        "dbConnection": "mongodb://localhost/",
-        "db": "mqtt"
+        "dbConnection": "mongodb://mqtt:mqtt@ds051841.mongolab.com:51841/",
+        "db": "bobbytech"
     },
     "tsstore": {
-        "dbConnection": "mongodb://localhost/",
-        "db": "timeseries",
+        "dbConnection": "mongodb://mqtt:mqtt@ds051841.mongolab.com:51841/",
+        "db": "bobbytech",
         "verbose": false
     },
     "bobby": {
-        "dbConnection": "mongodb://localhost/",
-        "db": "bobby",
+        "dbConnection":"mongodb://mqtt:mqtt@ds051841.mongolab.com:51841/",
+        "db": "bobbytech",
         "verbose": false
     },
     "enableAuth": true,

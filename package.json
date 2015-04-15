@@ -20,7 +20,7 @@
     "mongoose-ts": "jensoleg/mongoose-timeseries",
     "mosca": "^0.25.0",
     "request": ">=2.36.0",
-    "ts-store": "/jensoleg/ts-store",
+    "ts-store": "jensoleg/ts-store",
     "underscore": ">=1.6.0"
   }
 }
