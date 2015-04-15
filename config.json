@@ -1,39 +1,38 @@
 {
-    "mqtt": {
-        "host": "localhost",
-        "port": 1883,
-        "httpPort": 3000,
-        "loglevel": "",
-        "dbConnection": "mongodb://mqtt:mqtt@ds051841.mongolab.com:51841/",
-        "db": "bobbytech"
+  "mqtt": {
+    "host": "localhost",
+    "port": 1883,
+    "httpPort": 8080,
+    "loglevel": "",
+    "dbConnection": "mongodb://mqtt:mqtt@ds051841.mongolab.com:51841/",
+    "db": "bobbytech"
+  },
+  "tsstore": {
+    "dbConnection": "mongodb://mqtt:mqtt@ds051841.mongolab.com:51841/",
+    "db": "bobbytech",
+    "verbose": false
+  },
+  "bobby": {
+    "dbConnection": "mongodb://mqtt:mqtt@ds051841.mongolab.com:51841/",
+    "db": "bobbytech",
+    "verbose": false
+  },
+  "enableAuth": true,
+  "domains": {
+    "local": {
+      "endpoint": "https://development.auth0.com",
+      "clientSecret": "Hi0J-KYJi3qFiI96vMzy8PX7Dikys2h9r3f1Ij6zx7hZ27EjbIBKFAf6bQiCshJo",
+      "clientId": "kpWrEQ5gJclwuAljKpHgNcJA3NwNZ0FL"
     },
-    "tsstore": {
-        "dbConnection": "mongodb://mqtt:mqtt@ds051841.mongolab.com:51841/",
-        "db": "bobbytech",
-        "verbose": false
+    "decoplant": {
+      "endpoint": "https://decoplant.auth0.com",
+      "clientSecret": "7INrZwoivJwCP600uV_AbCI6QXVF1nGOSq4VnTHv_pYyvn27xV15JLtiYPa59ajt",
+      "clientId": "riQAyvtyyRBNvO9zhRsQAXMEtaQA02uW"
     },
-    "bobby": {
-        "dbConnection":"mongodb://mqtt:mqtt@ds051841.mongolab.com:51841/",
-        "db": "bobbytech",
-        "verbose": false
-    },
-    "enableAuth": true,
-    "domains": {
-        "local": {
-            "endpoint": "https://development.auth0.com",
-            "clientSecret": "Hi0J-KYJi3qFiI96vMzy8PX7Dikys2h9r3f1Ij6zx7hZ27EjbIBKFAf6bQiCshJo",
-            "clientId": "kpWrEQ5gJclwuAljKpHgNcJA3NwNZ0FL"
-        },
-        "decoplant": {
-            "endpoint": "https://decoplant.auth0.com",
-            "clientSecret": "7INrZwoivJwCP600uV_AbCI6QXVF1nGOSq4VnTHv_pYyvn27xV15JLtiYPa59ajt",
-            "clientId": "riQAyvtyyRBNvO9zhRsQAXMEtaQA02uW"
-        },
-        "development": {
-            "endpoint": "https://development.auth0.com",
-            "clientSecret": "Hi0J-KYJi3qFiI96vMzy8PX7Dikys2h9r3f1Ij6zx7hZ27EjbIBKFAf6bQiCshJo",
-            "clientId": "kpWrEQ5gJclwuAljKpHgNcJA3NwNZ0FL"
-        }
-
+    "development": {
+      "endpoint": "https://development.auth0.com",
+      "clientSecret": "Hi0J-KYJi3qFiI96vMzy8PX7Dikys2h9r3f1Ij6zx7hZ27EjbIBKFAf6bQiCshJo",
+      "clientId": "kpWrEQ5gJclwuAljKpHgNcJA3NwNZ0FL"
     }
+  }
 }
