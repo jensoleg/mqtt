@@ -10,4 +10,8 @@ cd ./mqtt
 
 npm install
 
-node .
+if [ -z "$APP" ]; then
+    export APP=app.js
+fi
+
+pm2 start -x $APP --no-daemon
