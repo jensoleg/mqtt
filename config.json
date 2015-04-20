@@ -2,7 +2,7 @@
   "mqtt": {
     "host": "localhost",
     "port": 1883,
-    "httpPort": 8080,
+    "httpPort": 8082,
     "loglevel": "",
     "dbConnection": "mongodb://mqtt:mqtt@ds051841.mongolab.com:51841/",
     "db": "bobbytech"
