@@ -1,2 +1,2 @@
 websocketserver = 'mqtt.bobbytechnologies.dk';
-websocketport = 8080;
+websocketport = 8082;
