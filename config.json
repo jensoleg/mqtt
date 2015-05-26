@@ -19,7 +19,7 @@
   },
   "enableAuth": true,
   "domains": {
-    "local": {
+    "senodio": {
       "endpoint": "https://senodio.eu.auth0.com",
       "clientSecret": "H-FNUr4n1iwhNfiHxsYxsVEnJKQiWrRqG4_pWYdyhBl030Ef0D_9WPYcTuCQFoYR",
       "clientId": "RAoAYmpefM2KZ4KFERmTxt2mam09ke6p"
