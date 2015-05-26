@@ -20,6 +20,11 @@
   "enableAuth": true,
   "domains": {
     "local": {
+      "endpoint": "https://senodio.eu.auth0.com",
+      "clientSecret": "H-FNUr4n1iwhNfiHxsYxsVEnJKQiWrRqG4_pWYdyhBl030Ef0D_9WPYcTuCQFoYR",
+      "clientId": "RAoAYmpefM2KZ4KFERmTxt2mam09ke6p"
+    },
+    "local": {
       "endpoint": "https://development.auth0.com",
       "clientSecret": "Hi0J-KYJi3qFiI96vMzy8PX7Dikys2h9r3f1Ij6zx7hZ27EjbIBKFAf6bQiCshJo",
       "clientId": "kpWrEQ5gJclwuAljKpHgNcJA3NwNZ0FL"
