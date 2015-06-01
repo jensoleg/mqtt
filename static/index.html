@@ -25,8 +25,10 @@ limitations under the License.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>MQTT Websocket Client</title>
+    <title>Senodio MQTT</title>
 
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/standalone.css">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/foundation.css">
@@ -35,12 +37,49 @@ limitations under the License.
 </head>
 <body class="notconnected">
 
-<div id="header">
+<header class="site-header">
+    <div data-spy="affix" data-offset-top="121">
+        <nav role="navigation" class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h1 class="navbar-brand"><a href="/"><span>Senodio</span></a></h1>
+                </div>
+                <div id="navbar-collapse" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="li-why"><a href="/why">Why Senodio</a></li>
+                        <li class="li-how"><a href="how">How It Works</a></li>
+                        <li class="li-pricing"><a href="pricing">Pricing</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Documentation <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="li-docs-api"><a href="/site/api-doc">Api Playground</a></li>
+                                <li class="li-docs-mqtt"><a href="http://mqtt.senodio.com">Publish/Subscribe API</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="li-docs"><a href="/support">Help &amp; Support</a></li>
+                        <li><a href="http://senodio.com/app" class="signin-button login">Open Dashboard</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+<!--div id="header">
     <div>
-        <a href="http://www.hivemq.com"><img id="headerlogo" src="assets/logo.png"></a>
+        <a href="http://www.senodio.com"><img style="width: 7%; height: 7%;" id="headerlogo" src="assets/box_icon_transparent.png">Senodio MQTT</a>
         <span id="headertitle">Websockets Client Showcase</span>
     </div>
-</div>
+</div-->
 <div id="content" class="row">
 <div id="connection" class="row large-12 columns">
 
@@ -63,7 +102,7 @@ limitations under the License.
                 <form class="custom">
                     <div class="large-5 columns">
                         <label>Host *</label>
-                        <input id="urlInput" type="text" value="mqtt.bobbytechnologies.com">
+                        <input id="urlInput" type="text" value="mqtt.senodio.com">
                     </div>
 
                     <div class="large-1 columns">
@@ -298,6 +337,7 @@ limitations under the License.
 <script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/4.2.3/js/foundation/foundation.forms.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.minicolors.min.js"></script>
 <script src="js/mqttws31.js"></script>
 <script src="js/encoder.js"></script>
@@ -319,6 +359,10 @@ limitations under the License.
 
         $('#urlInput').val(websocketserver);
         $('#portInput').val(websocketport);
+        $('#userInput').val(user);
+
+        $('#pwInput').val(JSON.parse(window.localStorage.getItem("token")));
+
         $('#clientIdInput').val('clientId-' + randomString(10));
 
         $('#colorChooser').minicolors();
@@ -327,6 +371,17 @@ limitations under the License.
             'afterShow': function () {
                 var rndColor = websocketclient.getRandomColor();
                 $("#colorChooser").minicolors('value', rndColor);
+            }
+        });
+
+        $(window).bind('storage', function (e) {
+            if (e.originalEvent.key && e.originalEvent.key == 'token' && e.originalEvent.newValue) {
+                console.log('got token : ', e.originalEvent.newValue)
+                $('.signin-button').html('open dashboard');
+            }
+            if (e.originalEvent.key && e.originalEvent.key == 'token' && !e.originalEvent.newValue) {
+                console.log('reset token : ', e.originalEvent.newValue)
+                $('.signin-button').html('login');
             }
         });
 
