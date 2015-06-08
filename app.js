@@ -5,8 +5,7 @@ var mosca = require('mosca'),
     TimeSeriesStore = require('ts-store'),
     mongoose = require('mongoose'),
     config = require('./config.json'),
-    uriUtil = require('mongodb-uri'),
-    Triggers = require('./app/triggers.js');
+    uriUtil = require('mongodb-uri');
 
 var options = {
     server: {
@@ -20,12 +19,7 @@ var options = {
 var mongodbTSUri = config.tsstore.dbConnection + config.tsstore.db,
     mongooseTSUri = uriUtil.formatMongoose(mongodbTSUri),
     mongodbMqttUri = config.mqtt.dbConnection + config.mqtt.db,
-    mongooseMqttUri = uriUtil.formatMongoose(mongodbMqttUri),
-    mongodbBobbyUri = config.bobby.dbConnection + config.bobby.db,
-    mongooseBobbyUri = uriUtil.formatMongoose(mongodbBobbyUri),
-    //MQTTconnection = mongoose.createConnection(mongooseMqttUri, options),
     TSconnection = mongoose.createConnection(mongooseTSUri, options);
-    //Bobbyconnection = mongoose.createConnection(mongooseBobbyUri, options);
 
 var settings = {
         port: config.mqtt.port,
@@ -63,14 +57,9 @@ server.on('clientConnected', function (client) {
     console.log('client connected', client.id + ' ' + client.deviceProfile.name + ' at: ' + client.deviceProfile.domain);
 });
 
-
-
-// var triggers = new Triggers(Bobbyconnection);
-
 server.on('published', function (packet, client) {
     if (client !== undefined) {
         console.log('Event Published: ' + packet.payload + ' Client :' + client.id);
-//        triggers.handle(packet, client);
     }
 });
 

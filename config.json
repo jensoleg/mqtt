@@ -12,11 +12,6 @@
     "db": "bobbytech",
     "verbose": false
   },
-  "bobby": {
-    "dbConnection": "mongodb://mqtt:mqtt@ds051841.mongolab.com:51841/",
-    "db": "bobbytech",
-    "verbose": false
-  },
   "enableAuth": true,
   "domains": {
     "senodio": {
