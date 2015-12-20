@@ -16,9 +16,9 @@ var options = {
     }
 };
 
-var mongodbTSUri = config.tsstore.dbConnection + config.tsstore.db,
+var mongodbTSUri = config.tsstore.dbConnection + config.tsstore.db + "?authMechanism=SCRAM-SHA-1",
     mongooseTSUri = uriUtil.formatMongoose(mongodbTSUri),
-    mongodbMqttUri = config.mqtt.dbConnection + config.mqtt.db,
+    mongodbMqttUri = config.mqtt.dbConnection + config.mqtt.db + "?authMechanism=SCRAM-SHA-1",
     TSconnection = mongoose.createConnection(mongooseTSUri, options);
 
 var settings = {
